@@ -1,0 +1,396 @@
+/* Глобальные настройки и сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Цветовая палитра в стиле iOS */
+:root {
+  --background: #f2f2f7; /* Светлый фон iOS */
+  --text: #000000; /* Чёрный текст для контраста */
+  --card-bg: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый с эффектом стекла */
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --input-border: #d2d2d7;
+  --button-bg: #007aff; /* Синий акцент iOS */
+  --button-hover: #005fd4;
+  --secondary-bg: #e5e5ea;
+  --secondary-hover: #d1d1d6;
+  --accent: #007aff;
+  --slider-bg: #d2d2d7;
+  --slider-thumb: #007aff;
+  --nav-bg: rgba(242, 242, 247, 0.9); /* Полупрозрачный фон навигации */
+}
+
+body.dark {
+  --background: #000000; /* Чёрный фон для тёмной темы iOS */
+  --text: #ffffff;
+  --card-bg: rgba(28, 28, 30, 0.95); /* Тёмное стекло */
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --input-bg: #1c1c1e;
+  --input-border: #3a3a3c;
+  --button-bg: #ff9500; /* Оранжевый акцент для тёмной темы */
+  --button-hover: #e08500;
+  --secondary-bg: #3a3a3c;
+  --secondary-hover: #48484a;
+  --accent: #ff9500;
+  --slider-bg: #3a3a3c;
+  --slider-thumb: #ff9500;
+  --nav-bg: rgba(28, 28, 30, 0.9);
+}
+
+/* Основные стили */
+body {
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px; /* Отступы в стиле iOS */
+  min-height: 100vh;
+}
+
+/* Заголовки */
+h1 {
+  font-size: 34px; /* Размер как в iOS для крупных заголовков */
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+h2 {
+  font-size: 22px; /* Средний заголовок iOS */
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* Карточки в стиле iOS */
+.card {
+  background: var(--card-bg);
+  border-radius: 18px; /* Закругления как в iOS 17 */
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(20px); /* Эффект стекла */
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px); /* Лёгкий подъём при наведении */
+}
+
+/* Кнопки */
+button {
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px; /* Закругления кнопок iOS */
+  font-size: 17px; /* Размер текста как в iOS */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: var(--button-hover);
+}
+
+button:active {
+  transform: scale(0.98); /* Эффект нажатия */
+}
+
+button.secondary {
+  background: var(--secondary-bg);
+  color: var(--text);
+}
+
+button.secondary:hover {
+  background: var(--secondary-hover);
+}
+
+button:disabled {
+  background: var(--secondary-bg);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Поля ввода */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  font-size: 17px;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Навигация */
+nav {
+  background: var(--nav-bg);
+  border-radius: 18px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--button-hover);
+}
+
+/* Переключатели языка и темы */
+.switcher-container {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+}
+
+button.switcher {
+  background: var(--card-bg);
+  color: var(--accent);
+  border: 1px solid var(--input-border);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+button.switcher:hover {
+  background: var(--secondary-bg);
+}
+
+button.switcher:active {
+  transform: scale(0.95);
+}
+
+/* MoodLog — Калейдоскоп и слайдер */
+.mood-log-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.mood-slider {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.kaleidoscope {
+  margin: 0 auto 20px;
+  width: 200px;
+  height: 200px;
+  animation: rotateKaleidoscope 20s infinite linear;
+}
+
+.kaleidoscope path,
+.kaleidoscope circle {
+  transition: fill 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes rotateKaleidoscope {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mood-label {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.mood-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  background: var(--slider-bg);
+  border-radius: 3px;
+  outline: none;
+  margin: 16px 0;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  background: var(--slider-thumb);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Список факторов */
+.factor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.factor-list span {
+  background: var(--secondary-bg);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.factor-list span.selected {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.factor-list span:hover {
+  background: var(--secondary-hover);
+}
+
+/* Заметки */
+.mood-note {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  font-size: 17px;
+  background: var(--input-bg);
+  color: var(--text);
+  min-height: 120px;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.mood-note:focus {
+  border-color: var(--accent);
+}
+
+/* Кнопка отправки */
+.submit-button {
+  width: 100%;
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-button:hover {
+  background: var(--button-hover);
+}
+
+/* Анимации */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+nav {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+  }
+
+  .kaleidoscope {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .switcher-container {
+    bottom: 12px;
+    right: 12px;
+    flex-direction: column;
+  }
+}

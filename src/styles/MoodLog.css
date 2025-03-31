@@ -1,0 +1,446 @@
+/* MoodLog.css - Premium iOS-style Mood Tracking Component */
+
+.mood-log-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mood-slider {
+  text-align: center;
+  margin: 32px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kaleidoscope-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kaleidoscope {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotateKaleidoscope 25s infinite linear, float 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rotateKaleidoscope {
+  0% { transform: rotate(0deg) rotateY(0deg); }
+  100% { transform: rotate(360deg) rotateY(360deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
+}
+
+.kaleidoscope path,
+.kaleidoscope circle {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.kaleidoscope:hover {
+  animation-play-state: paused;
+}
+
+.mood-label-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.mood-label {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+  position: relative;
+  padding: 0 20px;
+}
+
+.mood-label::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mood-slider:hover .mood-label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.mood-range-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin: 8px auto 0;
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.mood-range-labels span:first-child {
+  text-align: left;
+}
+
+.mood-range-labels span:last-child {
+  text-align: right;
+}
+
+.slider-container {
+  position: relative;
+  padding: 16px 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.slider-track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: var(--slider-bg);
+  border-radius: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+.slider-fill {
+  position: absolute;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  width: 50%;
+  transition: width 0.3s ease;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  background: transparent;
+  outline: none;
+  margin: 0;
+  z-index: 2;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  background: var(--slider-thumb);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 
+              0 0 0 4px rgba(var(--accent-rgb), 0.1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 2px solid white;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 
+              0 0 0 6px rgba(var(--accent-rgb), 0.15);
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+.section {
+  margin-bottom: 32px;
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section:nth-child(2) { animation-delay: 0.3s; }
+.section:nth-child(3) { animation-delay: 0.4s; }
+.section:nth-child(4) { animation-delay: 0.5s; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+
+.section-title svg {
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+.factor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.factor-item {
+  background: var(--secondary-bg);
+  padding: 10px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.factor-item:hover {
+  background: var(--secondary-hover);
+  transform: translateY(-2px);
+}
+
+.factor-item.selected {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.factor-item.selected:hover {
+  background: var(--button-hover);
+}
+
+.mood-note-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.mood-note {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--input-border);
+  border-radius: 14px;
+  font-size: 16px;
+  background: var(--input-bg);
+  color: var(--text);
+  min-height: 140px;
+  resize: vertical;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  line-height: 1.6;
+}
+
+.mood-note:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+  outline: none;
+}
+
+.mood-note::placeholder {
+  color: var(--text);
+  opacity: 0.4;
+}
+
+.character-count {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.mood-note:focus + .character-count {
+  opacity: 0.8;
+}
+
+.submit-button-container {
+  margin-top: 32px;
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submit-button {
+  width: 100%;
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.submit-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .mood-log-container {
+    padding: 16px;
+  }
+  
+  .kaleidoscope-container {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  
+  .mood-label {
+    font-size: 20px;
+    padding: 0 15px;
+  }
+  
+  .mood-range-labels {
+    max-width: 320px;
+    font-size: 13px;
+  }
+  
+  .mood-range-labels span {
+    width: 70px;
+  }
+
+  .slider-container {
+    max-width: 320px;
+  }
+  
+  .factor-item {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .kaleidoscope-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+  }
+  
+  .slider-container {
+    max-width: 280px;
+  }
+
+  .mood-note {
+    min-height: 120px;
+    font-size: 15px;
+  }
+
+  .mood-range-labels {
+    max-width: 280px;
+  }
+  
+  .mood-range-labels span {
+    width: 60px;
+  }
+}
+
+/* Add to :root in your main CSS */
+:root {
+  --accent-rgb: 0, 122, 255;
+}
+
+body.dark {
+  --accent-rgb: 255, 149, 0;
+}

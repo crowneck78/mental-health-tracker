@@ -1,33 +1,36 @@
 /* Общие стили */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #F5F5F5;
-  color: #1C2526;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
 }
 
 /* Навигация */
 nav {
   display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #E0E0E0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #E5E5EA;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-nav a {
-  text-decoration: none;
-  color: #8E8E93;
-  font-size: 16px;
-  padding: 8px 16px;
-  transition: color 0.2s;
+nav .logo {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-nav a:hover, nav a.active {
+nav a, nav button {
+  text-decoration: none;
   color: #007AFF;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* Контейнер страниц */
@@ -38,22 +41,25 @@ nav a:hover, nav a.active {
 }
 
 /* Заголовки */
-h1, h2 {
-  font-weight: 600;
-  color: #1C2526;
-}
-
 h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 h2 {
   font-size: 22px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
-/* Формы */
+p {
+  font-size: 17px;
+  color: #6E6E73;
+  line-height: 1.4;
+}
+
+/* Формы и поля ввода */
 form {
   display: flex;
   flex-direction: column;
@@ -62,12 +68,11 @@ form {
 
 input, select, textarea {
   padding: 12px;
-  font-size: 16px;
-  border: 1px solid #E0E0E0;
+  font-size: 17px;
+  border: 1px solid #E5E5EA;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #F7F7F7;
   outline: none;
-  transition: border-color 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -82,7 +87,7 @@ textarea {
 /* Кнопки */
 button {
   padding: 12px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: #FFFFFF;
   background-color: #007AFF;
@@ -96,16 +101,47 @@ button:hover {
   background-color: #005BB5;
 }
 
-button:disabled {
-  background-color: #C7C7CC;
-  cursor: not-allowed;
+button.secondary {
+  background-color: transparent;
+  color: #007AFF;
+  border: 1px solid #007AFF;
 }
 
-/* Карточки (для профиля и трекера) */
+/* Карточки */
 .card {
   background-color: #FFFFFF;
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
+}
+
+/* Слайдер (для трекера) */
+.slider {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to right, #FF3B30, #FF9500, #34C759);
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* Список факторов */
+.factor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.factor-list span {
+  padding: 8px 12px;
+  background-color: #F7F7F7;
+  border-radius: 15px;
+  font-size: 15px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.factor-list span.selected {
+  background-color: #007AFF;
+  color: #FFFFFF;
 }
