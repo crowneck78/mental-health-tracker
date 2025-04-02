@@ -1,24 +1,48 @@
-# Logs
-logs
+# Зависимости
+node_modules/
+*/node_modules/
+
+# Сборочные файлы и артефакты
+dist/
+build/
 *.log
+*.log.*
+
+# Временные файлы
+*.tmp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Локальные конфигурации и секреты
+.env
+*.env.*
+!.env.example
+
+# База данных
+*.sql
+*.sqlite
+*.db
+
+# Файлы редакторов
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Кэш и отладочные файлы
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+*.cache
 
-node_modules
-dist
-dist-ssr
-*.local
+# Тестирование
+coverage/
+*.lcov
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Производственные файлы (если есть)
+public/build/
+server/public/
+
+
